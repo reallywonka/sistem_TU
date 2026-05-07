@@ -1,0 +1,65 @@
+/* Google Fonts: Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&display=swap');
+
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* -------------------------------------------------------
+   Custom base styles
+------------------------------------------------------- */
+@layer base {
+    * {
+        box-sizing: border-box;
+    }
+
+    html {
+        -webkit-text-size-adjust: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #111827;
+        background-color: #f9fafb;
+    }
+
+    /* Focus visible outline for accessibility */
+    :focus-visible {
+        outline: 2px solid #3b82f6;
+        outline-offset: 2px;
+    }
+
+    /* Smooth table tr hover */
+    tr {
+        transition: background-color 0.1s ease;
+    }
+}
+
+/* -------------------------------------------------------
+   Pagination: override default Laravel pagination styles
+------------------------------------------------------- */
+@layer components {
+    nav[aria-label="pagination"] span,
+    nav[aria-label="pagination"] a {
+        @apply rounded-md px-3 py-1.5 text-sm border border-gray-200 text-gray-600 hover:bg-gray-100 transition-colors;
+    }
+
+    nav[aria-label="pagination"] span[aria-current="page"] {
+        @apply bg-blue-600 text-white border-blue-600 hover:bg-blue-700;
+    }
+
+    nav[aria-label="pagination"] span[aria-disabled="true"] {
+        @apply text-gray-300 cursor-not-allowed hover:bg-transparent;
+    }
+}
