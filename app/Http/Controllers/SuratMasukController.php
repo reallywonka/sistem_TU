@@ -6,8 +6,10 @@ use App\Models\SuratMasuk;
 use App\Models\KategoriSurat;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SuratMasukController extends Controller
 {
@@ -155,7 +157,7 @@ class SuratMasukController extends Controller
     }
 
     /** Download file PDF */
-    public function download(int $id)
+    public function download(int $id): StreamedResponse|RedirectResponse
     {
         $suratMasuk = SuratMasuk::findOrFail($id);
 

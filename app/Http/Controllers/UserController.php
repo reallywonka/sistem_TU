@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class UserController extends Controller
 {
@@ -64,7 +65,7 @@ class UserController extends Controller
 
     public function destroy(int $id): RedirectResponse
     {
-        if (auth()->user()->id_user === $id) {
+        if (Auth::user()?->id_user === $id) {
             return back()->with('error', 'Anda tidak dapat menghapus akun sendiri.');
         }
 

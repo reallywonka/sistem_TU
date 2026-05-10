@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\View\View;
 use App\Models\SuratMasuk;
 use App\Models\SuratKeluar;
 use App\Models\Disposisi;
-use App\Models\User;
 
 class DashboardController extends Controller
 {

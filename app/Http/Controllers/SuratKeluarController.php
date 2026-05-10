@@ -7,7 +7,8 @@ use App\Models\KategoriSurat;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SuratKeluarController extends Controller
 {
@@ -125,7 +126,7 @@ class SuratKeluarController extends Controller
             ->with('success', 'Surat keluar berhasil dihapus.');
     }
 
-    public function download(int $id)
+    public function download(int $id): StreamedResponse|RedirectResponse
     {
         $suratKeluar = SuratKeluar::findOrFail($id);
 

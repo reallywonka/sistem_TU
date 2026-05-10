@@ -69,4 +69,16 @@
         </div>
     </dl>
 </div>
+
+@if($arsip->file_pdf)
+<div class="mt-6 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+    <div class="border-b border-gray-200 bg-gray-50 px-6 py-4">
+        <h2 class="text-base font-semibold text-gray-900">Preview Dokumen</h2>
+    </div>
+    <div class="w-full h-[800px] bg-gray-100">
+        <iframe src="{{ asset('storage/' . $arsip->file_pdf) }}" class="w-full h-full border-0"></iframe>
+    </div>
+</div>
+@endif
+
 @endsection

@@ -6,8 +6,10 @@ use App\Models\SuratMasuk;
 use App\Models\SuratKeluar;
 use App\Models\KategoriSurat;
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class ArsipController extends Controller
 {
@@ -82,7 +84,7 @@ class ArsipController extends Controller
         return view('arsip.show', compact('arsip', 'type'));
     }
 
-    public function download(string $type, int $id)
+    public function download(string $type, int $id): StreamedResponse|RedirectResponse
     {
         abort_unless(in_array($type, ['masuk', 'keluar']), 404);
 

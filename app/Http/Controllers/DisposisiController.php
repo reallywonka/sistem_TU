@@ -7,7 +7,8 @@ use App\Models\SuratMasuk;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\View\View;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\View\View;
 
 class DisposisiController extends Controller
 {
@@ -27,7 +28,7 @@ class DisposisiController extends Controller
     /** Buat disposisi baru (dari halaman show surat masuk) — kepala_sekolah only */
     public function store(Request $request): RedirectResponse
     {
-        if (!auth()->user()->isKepsek()) {
+        if (!Auth::user()?->isKepsek()) {
             abort(403, 'Hanya Kepala Sekolah yang dapat membuat disposisi.');
         }
 
@@ -56,7 +57,7 @@ class DisposisiController extends Controller
 
     public function destroy(int $id): RedirectResponse
     {
-        if (!auth()->user()->isKepsek()) {
+        if (!Auth::user()?->isKepsek()) {
             abort(403, 'Akses ditolak.');
         }
 

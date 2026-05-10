@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\SuratMasuk;
 use App\Models\SuratKeluar;
 use App\Models\Disposisi;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use Illuminate\Contracts\View\View;
 
 class LaporanController extends Controller
 {
@@ -29,7 +30,7 @@ class LaporanController extends Controller
         ));
     }
 
-    public function export(Request $request)
+    public function export(Request $request): RedirectResponse
     {
         // Placeholder — bisa diisi dengan export Excel/PDF nanti
         return back()->with('error', 'Fitur export akan segera tersedia.');
