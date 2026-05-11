@@ -54,13 +54,4 @@ class User extends Authenticatable
     {
         return $this->role === $role;
     }
-
-    // -------------------------------------------------------
-    // Override Auth username field (default is 'email')
-    // -------------------------------------------------------
-
-    public function getAuthIdentifierName(): string
-    {
-        return 'username';
-    }
 }
